@@ -8130,11 +8130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PT\\Desktop\\Mars\\Project-MARS\\Project_MARS\\Project_MARS\\Project_MARS.csproj",
+      "projectUniqueName": "C:\\Users\\PT\\Desktop\\Git-MARS\\Project_MARS\\Project_MARS\\Project_MARS.csproj",
       "projectName": "Project_MARS",
-      "projectPath": "C:\\Users\\PT\\Desktop\\Mars\\Project-MARS\\Project_MARS\\Project_MARS\\Project_MARS.csproj",
+      "projectPath": "C:\\Users\\PT\\Desktop\\Git-MARS\\Project_MARS\\Project_MARS\\Project_MARS.csproj",
       "packagesPath": "C:\\Users\\PT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PT\\Desktop\\Mars\\Project-MARS\\Project_MARS\\Project_MARS\\obj\\",
+      "outputPath": "C:\\Users\\PT\\Desktop\\Git-MARS\\Project_MARS\\Project_MARS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\PT\\AppData\\Roaming\\NuGet\\NuGet.Config",

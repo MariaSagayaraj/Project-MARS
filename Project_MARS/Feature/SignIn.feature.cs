@@ -73,23 +73,14 @@ namespace Project_MARS.Feature
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 4
-#line hidden
-#line 5
- testRunner.Given("Web browser is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("SignIn the portal")]
-        [NUnit.Framework.CategoryAttribute("Login")]
-        [NUnit.Framework.TestCaseAttribute("prabhabuoyant24.7@gmail.com", "password123", null)]
+        [NUnit.Framework.CategoryAttribute("Automation")]
+        [NUnit.Framework.TestCaseAttribute("maria.saronia@gmail.com", "123456", null)]
         public virtual void SignInThePortal(string username, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Login"};
+                    "Automation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -99,7 +90,7 @@ namespace Project_MARS.Feature
             argumentsOfScenario.Add("username", username);
             argumentsOfScenario.Add("password", password);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("SignIn the portal", null, tagsOfScenario, argumentsOfScenario);
-#line 8
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -119,16 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 4
-this.FeatureBackground();
+#line 6
+ testRunner.Given("Web browser is opened", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 7
+ testRunner.And("I Navigate to the portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 8
+ testRunner.When(string.Format("I enter user credentials and press Login button {0},{1}", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 9
- testRunner.Given("I Navigate to the portal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 10
- testRunner.And(string.Format("I enter user credentials and press Login button {0},{1}", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-#line 11
  testRunner.Then("I validate that I logged into the portal successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

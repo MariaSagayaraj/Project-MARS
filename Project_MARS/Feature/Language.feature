@@ -5,11 +5,11 @@
 Background:
 	Given I click on the Language tab
 
-@Add_Language
-Scenario:1_Add a language using valid input
+@automation
+Scenario Outline: 1_Adding Languages using valid inputs
 	Given I click on Add New button of Language tab
 	And I enter the language details <language>,<languagelevel>
-	Then I click on Add button of Language tab
+	When I click on Add button of Language tab
 	Then I validate that the new language has been added successfully <language>
 
 	Examples:
@@ -19,15 +19,18 @@ Scenario:1_Add a language using valid input
 		| French   | Conversational |
 
 Scenario:2_Edit an existing language using valid input
-	Given I click on Edit button of Language tab
-	And I edit the language details <Editlanguage>
-	Then I click on the Update button of Language tab
+	Given I edit the language details <language>, <Editlanguage>
+	When I click on the Update button of Language tab
 	Then I validate that the language has been edited successfully <Editlanguage>
 
 	Examples:
-		| Editlanguage |
-		| Spanish      |
+		| language | Editlanguage |
+		| Tamil    | Spanish      |
 
 Scenario:3_Delete an existing language
-	Given I click on Delete button of Language tab
-	Then I validate that the language has been deleted successfully
+	Given I click on Delete button of Language tab <deletelanguage>
+	Then I validate that the language has been deleted successfully <deletelanguage>
+
+	Examples:
+		| deletelanguage |
+		| French   |

@@ -14,7 +14,7 @@ namespace Project_MARS.Hookup
         [Given(@"I click on the edit button of Description")]
         public void GivenIClickOnTheEditButtonOfDescription()
         {
-            
+            Thread.Sleep(2000);
             Profile.DescriptionIcon.Click();
         }
 
@@ -26,7 +26,7 @@ namespace Project_MARS.Hookup
             Profile.DescriptionText.SendKeys(description);
         }
 
-        [Given(@"I click on Save button")]
+        [When(@"I click on Save button")]
         public void GivenIClickOnSaveButton()
         {
             Profile.SaveDescriptionButton.Click();

@@ -56,5 +56,133 @@ namespace Project_MARS.Specflow.Pages
         public static IWebElement SaveDescriptionButton => driver.FindElement(By.XPath("//div[@class='ui twelve wide column']//button[@class='ui teal button'][text()='Save']"));
 
 
+
+        public static void flashmessage(String data)
+        {
+            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
+
+            var actual = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
+
+            var languageAdd = (data + " " + "has been added to your languages");
+            var languageUpdate = (data + " " + "has been updated to your languages");
+            var languagedelete = (data + " " + "has been deleted from your languages");
+
+            var skillAdd = (data + " " + "has been added to your skills");
+            var skillUpdate = (data + " " + "has been updated to your skills");
+            var skilldelete = (data + " " + "has been deleted");
+
+
+            if (actual == languageAdd)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been added to your languages");
+                return;
+            }
+            else if (actual == languageUpdate)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been updated to your languages");
+                return;
+            }
+            else if (actual == languagedelete)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been deleted from your languages");
+                return;
+            }
+            else if (actual == skillAdd)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been added to your skills");
+                return;
+            }
+            else if (actual == skillUpdate)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been updated to your skills");
+                return;
+            }
+            else if (actual == skilldelete)
+            {
+                Assert.Pass();
+                Console.WriteLine(data + "has been deleted");
+                return;
+            }
+
+            else
+            {
+                Assert.Fail();
+            }
+
+        }
+
+        public static void LanguageUpdate(String language, String editLanguage)
+        {
+            for (int i = 1; i > 0; i++)
+            {
+                var languageList = driver.FindElement(By.XPath("/ html[1] / body[1] / div[1] / div[1] / section[2] / div[1] / div[1] / div[1] / div[3] / form[1] / div[2] / div[1] / div[2] / div[1] / table[1] / tbody[" + i + "] / tr[1] / td[1]")).Text;
+
+                //logic to select the language we need to update
+                if (languageList == language)
+                {
+                    driver.FindElement(By.XPath("//tbody[" + i + "]//tr[1]//td[3]//span[1]//i[1]")).Click();
+                    EditLanguageText.Clear();
+                    EditLanguageText.SendKeys(editLanguage);
+                    return;
+                }
+            }
+
+
+        }
+
+        public static void LanguageDelete(String deletelanguage)
+        {
+            for (int i = 1; i > 0; i++)
+            {
+                var languageList = driver.FindElement(By.XPath("/ html[1] / body[1] / div[1] / div[1] / section[2] / div[1] / div[1] / div[1] / div[3] / form[1] / div[2] / div[1] / div[2] / div[1] / table[1] / tbody[" + i + "] / tr[1] / td[1]")).Text;
+
+                //logic to select the language we need to update
+                if (languageList == deletelanguage)
+                {
+                    driver.FindElement(By.XPath("//div[@class='ui bottom attached tab segment active tooltip-target']//tbody[" + i + "]//tr[1]//td[3]//span[2]//i[1]")).Click();
+                    return;
+                }
+            }
+
+        }
+
+        public static void SkillUpdate(String skill, String editSkill)
+        {
+            for (int i = 1; i > 0; i++)
+            {
+                var skillList = driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/table[1]/tbody[" + i + "]/tr[1]/td[1]")).Text;
+
+                //logic to select the language we need to update
+                if (skillList == skill)
+                {
+                    driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/table[1]/tbody[" + i + "]/tr[1]/td[3]/span[1]/i[1]")).Click();
+                    EditSkillText.Clear();
+                    EditSkillText.SendKeys(editSkill);
+                    return;
+                }
+            }
+
+
+        }
+
+        public static void SkillDelete(String deleteskill)
+        {
+            for (int i = 1; i > 0; i++)
+            {
+                var SkillList = driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/table[1]/tbody[" + i + "]/tr[1]/td[1]")).Text;
+
+                //logic to select the language we need to update
+                if (SkillList == deleteskill)
+                {
+                    driver.FindElement(By.XPath("/html[1]/body[1]/div[1]/div[1]/section[2]/div[1]/div[1]/div[1]/div[3]/form[1]/div[3]/div[1]/div[2]/div[1]/table[1]/tbody[" + i + "]/tr[1]/td[3]/span[2]/i[1]")).Click();
+                    return;
+                }
+            }
+        }
     }
 }

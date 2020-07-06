@@ -76,14 +76,12 @@ namespace Project_MARS.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Add a Description to the profile")]
-        [NUnit.Framework.CategoryAttribute("Add")]
-        [NUnit.Framework.CategoryAttribute("Description")]
-        [NUnit.Framework.TestCaseAttribute("Hello! I am Prabha, I am a Test Analyst.", null)]
+        [NUnit.Framework.CategoryAttribute("automation")]
+        [NUnit.Framework.TestCaseAttribute("I am Maria. I am a Test Analyst.", null)]
         public virtual void AddADescriptionToTheProfile(string description, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Add",
-                    "Description"};
+                    "automation"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -92,7 +90,7 @@ namespace Project_MARS.Feature
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("description", description);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a Description to the profile", null, tagsOfScenario, argumentsOfScenario);
-#line 6
+#line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -112,16 +110,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 7
+#line 8
  testRunner.Given("I click on the edit button of Description", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 8
+#line 9
  testRunner.And(string.Format("I enter the description {0}", description), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 9
- testRunner.And("I click on Save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 10
+ testRunner.When("I click on Save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 11
  testRunner.Then("I validate that the description has been added successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

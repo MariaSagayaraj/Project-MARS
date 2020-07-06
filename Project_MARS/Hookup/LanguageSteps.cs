@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Project_MARS.Specflow.Helpers;
@@ -27,33 +28,27 @@ namespace Project_MARS.Hookup
         [Given(@"I enter the language details (.*),(.*)")]
         public void GivenIEnterTheLanguageDetails(string language, string languagelevel)
         {
-            
+
             Profile.AddLanguageText.SendKeys(language);
             SelectElement selectElement = new SelectElement(Profile.SelectLanguageLevel);
             selectElement.SelectByText(languagelevel);
         }
 
-        [Given(@"I click on Edit button of Language tab")]
-        public void GivenIClickOnEditButtonOfLanguageTab()
+
+        [Given(@"I edit the language details (.*),(.*)")]
+        public void GivenIEditTheLanguageDetails(string language, string editLanguage)
         {
-            Profile.EditLanguageIcon.Click();
+            Profile.LanguageUpdate(language, editLanguage);
+
         }
 
-        [Given(@"I edit the language details (.*)")]
-        public void GivenIEditTheLanguageDetails(string EditLanguage)
+        [Given(@"I click on Delete button of Language tab (.*)")]
+        public void GivenIClickOnDeleteButtonOfLanguageTab(string deletelanguage)
         {
-            
-            Profile.EditLanguageText.Clear();
-            Profile.EditLanguageText.SendKeys(EditLanguage);
+            Profile.LanguageDelete(deletelanguage);
         }
 
-        [Given(@"I click on Delete button of Language tab")]
-        public void GivenIClickOnDeleteButtonOfLanguageTab()
-        {
-            Profile.DeleteLanguageButton.Click();
-        }
-
-        [Then(@"I click on Add button of Language tab")]
+        [When(@"I click on Add button of Language tab")]
         public void ThenIClickOnAddButtonOfLanguageTab()
         {
             Profile.AddLanguagebutton.Click();
@@ -62,21 +57,10 @@ namespace Project_MARS.Hookup
         [Then(@"I validate that the new language has been added successfully (.*)")]
         public void ThenIValidateThatTheNewLanguageHasBeenAddedSuccessfully(string language)
         {
-            //verify the add success confirmation flash message
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
-            try
-            {
-                Assert.IsTrue(message.Contains(language + " " + "has been added to your languages"));
-            }
-            catch (Exception)
-            {
-
-                Assert.Fail();
-            }
+            Profile.flashmessage(language);
         }
 
-        [Then(@"I click on the Update button of Language tab")]
+        [When(@"I click on the Update button of Language tab")]
         public void ThenIClickOnTheUpdateButtonOfLanguageTab()
         {
             Profile.UpdateLanguageButton.Click();
@@ -85,34 +69,14 @@ namespace Project_MARS.Hookup
         [Then(@"I validate that the language has been edited successfully (.*)")]
         public void ThenIValidateThatTheLanguageHasBeenEditedSuccessfully(string Editlanguage)
         {
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
-            try
-            {
-                Assert.IsTrue(message.Contains(Editlanguage + " " + "has been updated to your languages"));
-            }
-            catch (Exception)
-            {
 
-                Assert.Fail();
-            }
+            Profile.flashmessage(Editlanguage);
         }
 
-        [Then(@"I validate that the language has been deleted successfully")]
-        public void ThenIValidateThatTheLanguageHasBeenDeletedSuccessfully()
+        [Then(@"I validate that the language has been deleted successfully (.*)")]
+        public void ThenIValidateThatTheLanguageHasBeenDeletedSuccessfully(string deletelanguage)
         {
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
-            try
-            {
-                Assert.IsTrue(message.Contains("has been deleted from your languages"));
-            }
-            catch (Exception)
-            {
-
-                Assert.Fail();
-            }
+            Profile.flashmessage(deletelanguage);
         }
 
     }

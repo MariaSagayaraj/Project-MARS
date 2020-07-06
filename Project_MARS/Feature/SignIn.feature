@@ -1,11 +1,11 @@
 ﻿Feature:1_SignIn
 	As a user, I should be Signed In successfully
 
-@Login
+@automation
 Scenario: SignIn the portal
 	Given Web browser is opened
 	And I Navigate to the portal
-	And I enter user credentials and press Login button <username>,<password>
+	When I enter user credentials and press Login button <username>,<password>
 	Then I validate that I logged into the portal successfully
 
 	Examples:

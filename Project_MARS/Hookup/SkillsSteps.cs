@@ -34,28 +34,22 @@ namespace Project_MARS.Hookup
             selectElement.SelectByText(skilllevel);
         }
 
-        [Given(@"I click on Edit button of skills tab")]
-        public void GivenIClickOnEditButtonofskillstab()
+        
+        [Given(@"I edit the skill details (.*),(.*)")]
+        public void GivenIEditTheSkillDetails(string skill, string editSkill)
         {
-            Profile.EditSkillIcon.Click();
+
+            Profile.SkillUpdate(skill, editSkill);
         }
 
-        [Given(@"I edit the skill details (.*)")]
-        public void GivenIEditTheSkillDetails(string EditSkill)
+        [Given(@"I click on Delete button of skills tab (.*)")]
+        public void GivenIClickOnDeleteButtonofskillstab(string deleteskill)
         {
-            
-            Profile.EditSkillText.Clear();
-            Profile.EditSkillText.SendKeys(EditSkill);
+
+            Profile.SkillDelete(deleteskill);
         }
 
-        [Given(@"I click on Delete button of skills tab")]
-        public void GivenIClickOnDeleteButtonofskillstab()
-        {
-            
-            Profile.DeleteSkillButton.Click();
-        }
-
-        [Then(@"I click on Add button of skills tab")]
+        [When(@"I click on Add button of skills tab")]
         public void ThenIClickOnAddButtonofskillstab()
         {
             Profile.AddSkillbutton.Click();
@@ -64,22 +58,10 @@ namespace Project_MARS.Hookup
         [Then(@"I validate that the new skill has been added successfully (.*)")]
         public void ThenIValidateThatTheNewSkillHasBeenAddedSuccessfully(string skill)
         {
-            //verify the success confirmation from the flash message
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']"));
-            try
-            {
-                
-                Assert.IsTrue(message.Text.Contains(skill + " " + "has been added to your skills"));
-            }
-            catch (Exception)
-            {
-
-                Assert.Fail();
-            }
+            Profile.flashmessage(skill);
         }
 
-        [Then(@"I click on the Update button of skills tab")]
+        [When(@"I click on the Update button of skills tab")]
         public void ThenIClickOnTheUpdateButtonofskillstab()
         {
             Profile.UpdateSkillButton.Click();
@@ -88,37 +70,13 @@ namespace Project_MARS.Hookup
         [Then(@"I validate that the skill has been edited successfully (.*)")]
         public void ThenIValidateThatTheSkillHasBeenEditedSuccessfully(string EditSkill)
         {
-            //verify the success confirmation from the flash message
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
-            try
-            {
-                //TurnOnWait();
-                Assert.IsTrue(message.Contains(EditSkill + " " + "has been updated to your skills"));
-            }
-            catch (Exception)
-            {
-
-                Assert.Fail();
-            }
+            Profile.flashmessage(EditSkill);
         }
 
-        [Then(@"I validate that the skill has been deleted successfully")]
-        public void ThenIValidateThatTheSkillHasBeenDeletedSuccessfully()
+        [Then(@"I validate that the skill has been deleted successfully (.*)")]
+        public void ThenIValidateThatTheSkillHasBeenDeletedSuccessfully(string deleteskill)
         {
-            //verify the success confirmation from the flash message
-            WaitHelpers.waitClickableElement(driver, "XPath", "//div[@class='ns-box-inner']");
-            var message = driver.FindElement(By.XPath("//div[@class='ns-box-inner']")).Text;
-            try
-            {
-                //TurnOnWait();
-                Assert.IsTrue(message.Contains("has been deleted"));
-            }
-            catch (Exception)
-            {
-
-                Assert.Fail();
-            }
+            Profile.flashmessage(deleteskill);
         }
     }
 }
